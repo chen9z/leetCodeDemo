@@ -33,7 +33,9 @@ public class Demo {
 
     @Test
     public void func4() {
-        String s = "9876543210";
+        int[][] matrix = {{1, 2}, {4,5}};
+        ArrayDemo arrayDemo = new ArrayDemo();
+        System.out.println(Arrays.toString(arrayDemo.findDiagonalOrder(matrix)));
 
     }
 }

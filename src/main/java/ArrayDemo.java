@@ -69,5 +69,49 @@ public class ArrayDemo {
         return digits;
     }
 
+    /**
+     * 对角线遍历
+     * @param matrix
+     * @return
+     */
+    public int[] findDiagonalOrder(int[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0) {
+            return new int[0];
+        }
+        int m=matrix.length;
+        int n=matrix[0].length;
+        int[] mArray = new int[m * n];
+
+        int row=0;
+        int col=0;
+        //记录方向，右上和左下
+        int[][] dirs = {{-1, 1}, {1, -1}};
+        //方向标记
+        int k=0;
+        for (int i = 0; i < mArray.length; i++) {
+            mArray[i] = matrix[row][col];
+            row += dirs[k][0];
+            col += dirs[k][1];
+            if (col > n - 1) {
+                col=n-1;
+                row+=2;
+                k=1-k;
+            }
+            if (col < 0) {
+                col=0;
+                k=1-k;
+            }
+            if (row > m - 1) {
+                row=m-1;
+                col+=2;
+                k=1-k;
+            }
+            if (row < 0) {
+                row=0;
+                k=1-k;
+            }
+        }
+        return mArray;
+    }
 
 }
