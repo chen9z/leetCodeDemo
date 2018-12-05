@@ -26,7 +26,7 @@ public class Demo {
 
     @Test
     public void func3() {
-        int[] nums = {9,8,7,6,5,4,3,2,1,0};
+        int[] nums = {9,9};
         ArrayDemo demo = new ArrayDemo();
         Arrays.stream(demo.plusOne(nums)).forEach(System.out::println);
     }
@@ -34,7 +34,6 @@ public class Demo {
     @Test
     public void func4() {
         String s = "9876543210";
-        Long.valueOf(s);
-        System.out.println(Long.valueOf(s));
+
     }
 }
