@@ -92,6 +92,7 @@ public class ArrayDemo {
             mArray[i] = matrix[row][col];
             row += dirs[k][0];
             col += dirs[k][1];
+
             if (col > n - 1) {
                 col=n-1;
                 row+=2;
