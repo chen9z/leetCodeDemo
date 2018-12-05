@@ -41,17 +41,9 @@ public class ArrayDemo {
     }
 
     public int[] plusOne(int[] digits) {
-        StringBuilder builder = new StringBuilder();
-        Arrays.stream(digits).forEach(i -> builder.append(i));
-        BigInteger bigInteger = new BigInteger(builder.toString());
-        bigInteger=bigInteger.add(new BigInteger("1"));
-
-        char[] chars = bigInteger.toString().toCharArray();
-        int[] array = new int[chars.length];
-        for (int i = 0; i < chars.length; i++) {
-            array[i] = Character.getNumericValue(chars[i]);
+        for (int i = 0; i < digits.length; i++) {
         }
-        return array;
+        return null;
     }
 
 
