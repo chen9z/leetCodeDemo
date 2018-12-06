@@ -47,4 +47,11 @@ public class Demo {
         list.forEach(System.out::println);
 
     }
+
+    @Test
+    public void func6() {
+        ArrayDemo demo = new ArrayDemo();
+        List<List<Integer>> generate = demo.generate(5);
+        generate.forEach(System.out::println);
+    }
 }

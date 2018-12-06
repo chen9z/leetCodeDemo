@@ -122,6 +122,7 @@ public class ArrayDemo {
 
     /**
      * leetcode 螺旋矩阵
+     *
      * @param matrix
      * @return
      */
@@ -161,13 +162,13 @@ public class ArrayDemo {
                 k += 1;
             }
             //向左移动过界
-            if (col < (n1-n)/2) {
+            if (col < (n1 - n) / 2) {
                 row -= 1;
-                col+=1;
+                col += 1;
                 k += 1;
             }
             //向上移动过界
-            if (row == (m1 - m)/2 && k % 4 == 3) {
+            if (row == (m1 - m) / 2 && k % 4 == 3) {
                 col += 1;
                 row += 1;
                 m -= 2;
@@ -178,4 +179,21 @@ public class ArrayDemo {
         return mList;
     }
 
+
+    public List<List<Integer>> generate(int numRows) {
+        List<List<Integer>> list = new ArrayList<>();
+
+        for (int i = 0; i < numRows; i++) {
+            List<Integer> mList = new ArrayList<>();
+            for (int j = 0; j < i+1; j++) {
+                if (j == 0 || j == i) {
+                    mList.add(1);
+                } else {
+                    mList.add(list.get(i-1).get(j) + list.get(i-1).get(j-1));
+                }
+            }
+            list.add(mList);
+        }
+        return list;
+    }
 }
