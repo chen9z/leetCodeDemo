@@ -179,7 +179,11 @@ public class ArrayDemo {
         return mList;
     }
 
-
+    /**
+     * 杨辉三角
+     * @param numRows
+     * @return
+     */
     public List<List<Integer>> generate(int numRows) {
         List<List<Integer>> list = new ArrayList<>();
 
