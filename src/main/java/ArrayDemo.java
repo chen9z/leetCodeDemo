@@ -1,6 +1,6 @@
-import java.math.BigDecimal;
-import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by chen on 2018/12/5.
@@ -27,6 +27,7 @@ public class ArrayDemo {
 
     /**
      * 至少是其他数字两倍的最大数
+     *
      * @param nums
      * @return
      */
@@ -48,6 +49,7 @@ public class ArrayDemo {
 
     /**
      * 加一
+     *
      * @param digits
      * @return
      */
@@ -71,6 +73,7 @@ public class ArrayDemo {
 
     /**
      * 对角线遍历
+     *
      * @param matrix
      * @return
      */
@@ -78,41 +81,101 @@ public class ArrayDemo {
         if (matrix.length == 0 || matrix[0].length == 0) {
             return new int[0];
         }
-        int m=matrix.length;
-        int n=matrix[0].length;
+        int m = matrix.length;
+        int n = matrix[0].length;
         int[] mArray = new int[m * n];
 
-        int row=0;
-        int col=0;
+        int row = 0;
+        int col = 0;
         //记录方向，右上和左下
         int[][] dirs = {{-1, 1}, {1, -1}};
         //方向标记
-        int k=0;
+        int k = 0;
         for (int i = 0; i < mArray.length; i++) {
             mArray[i] = matrix[row][col];
             row += dirs[k][0];
             col += dirs[k][1];
 
             if (col > n - 1) {
-                col=n-1;
-                row+=2;
-                k=1-k;
-            }
-            if (col < 0) {
-                col=0;
-                k=1-k;
+                col = n - 1;
+                row += 2;
+                k = 1 - k;
             }
             if (row > m - 1) {
-                row=m-1;
-                col+=2;
-                k=1-k;
+                row = m - 1;
+                col += 2;
+                k = 1 - k;
             }
+            if (col < 0) {
+                col = 0;
+                k = 1 - k;
+            }
+
             if (row < 0) {
-                row=0;
-                k=1-k;
+                row = 0;
+                k = 1 - k;
             }
         }
         return mArray;
+    }
+
+
+    /**
+     * leetcode 螺旋矩阵
+     * @param matrix
+     * @return
+     */
+    public List<Integer> spiralOrder(int[][] matrix) {
+        if (matrix.length == 0 || matrix[0].length == 0) {
+            return new ArrayList<>();
+        }
+        int m = matrix.length;
+        int n = matrix[0].length;
+
+        int m1 = m;
+        int n1 = n;
+
+        List<Integer> mList = new ArrayList<>(m * n);
+        int row = 0, col = 0;
+        //定义移动方向
+        int[][] dirs = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+        //方向标志
+        int k = 0;
+        for (int i = 0; i < m1 * n1; i++) {
+            mList.add(matrix[row][col]);
+
+            //下一个坐标
+            row += dirs[k % 4][0];
+            col += dirs[k % 4][1];
+
+            //向右移动过界
+            if (col > n - 1 + (n1 - n) / 2) {
+                col -= 1;
+                row += 1;
+                k += 1;
+            }
+            //向下移动过界
+            if (row > m - 1 + (m1 - m) / 2) {
+                row -= 1;
+                col -= 1;
+                k += 1;
+            }
+            //向左移动过界
+            if (col < (n1-n)/2) {
+                row -= 1;
+                col+=1;
+                k += 1;
+            }
+            //向上移动过界
+            if (row == (m1 - m)/2 && k % 4 == 3) {
+                col += 1;
+                row += 1;
+                m -= 2;
+                n -= 2;
+                k += 1;
+            }
+        }
+        return mList;
     }
 
 }

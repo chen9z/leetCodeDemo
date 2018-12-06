@@ -1,8 +1,7 @@
 import org.junit.Test;
 
-import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.stream.IntStream;
+import java.util.List;
 
 /**
  * Created by chen on 2018/12/5.
@@ -36,6 +35,16 @@ public class Demo {
         int[][] matrix = {{1, 2}, {4,5}};
         ArrayDemo arrayDemo = new ArrayDemo();
         System.out.println(Arrays.toString(arrayDemo.findDiagonalOrder(matrix)));
+    }
+
+    @Test
+    public void func5() {
+//        int[][] matrix = {{1, 2, 3,13}, {4, 5, 6,16}, {7, 8, 9,19}};
+        int[][] matrix = {{1, 2, 3,4,5}, {6,7,8,9,10}, {11,12,13,14,15},{16,17,18,19,20},{21,22,23,24,25}};
+        ArrayDemo arrayDemo = new ArrayDemo();
+        List<Integer> list = arrayDemo.spiralOrder(matrix);
+
+        list.forEach(System.out::println);
 
     }
 }
